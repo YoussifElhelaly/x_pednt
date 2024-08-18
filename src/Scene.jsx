@@ -7,16 +7,38 @@ Source: https://sketchfab.com/3d-models/earth-f7a76c63ff1846afb2d606e5c8369c15
 Title: Earth
 */
 
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { Suspense, useEffect, useState } from 'react'
+import { MeshReflectorMaterial, PresentationControls, Stage, useGLTF, useTexture } from '@react-three/drei'
+import Carbon from '../Carbon'
+import NewModel from '../NewModel'
+
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/scene.gltf')
+
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Object_4.geometry} material={materials['Scene_-_Root']} scale={1.128} />
-    </group>
+    <PresentationControls speed={1.5} global zoom={500} polar={[-0.1, Math.PI / 4]}>
+      <Stage environment={"apartment"} intensity={1} contactShadow={false} shadowBias={-0.0015}>
+      <ambientLight intensity={1000} color={"white"} />
+        <Suspense fallback={null}>
+          {/* <Carbon/> */}
+          <NewModel/>
+        </Suspense>
+      </Stage>
+      <mesh rotation={[-Math.PI / 0, 0, 0]}> 
+      <planeGeometry args={ [170, 170]} />
+        <MeshReflectorMaterial 
+        blur={[300, 100]} 
+        resolution={2048}
+        mixBlur={1}
+        mixStrength={40} 
+        roughness={1} 
+        depthScale={25} 
+        minDepthThreshold={0.4}
+        maxDepthThreshold={1.4}
+        color="black" 
+        metalness={0.5}
+        />
+      </mesh>
+    </PresentationControls>
   )
 }
-
-useGLTF.preload('/scene.gltf')

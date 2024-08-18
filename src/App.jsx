@@ -1,20 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Canvas } from '@react-three/fiber'
-import Model from './Scene'
+import { Canvas, useFrame } from "@react-three/fiber";
+import Model from "./Scene";
+import ModelBaby from "./components/modelBaby";
+import BabylonScene from "./components/modelBaby";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+export default function App() {
   return (
     <>
-      <Canvas>
-        <Model/>
-      </Canvas>
+    <Canvas style={{height: "100vh"}}>
+      <color attach="background" args={ ["#f2f2f2"]}/>
+      <Model/>
+    </Canvas>
+    {/* <BabylonScene/> */}
+    
     </>
-  )
+  );
 }
-
-export default App
