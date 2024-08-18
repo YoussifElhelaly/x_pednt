@@ -7,11 +7,11 @@ import BabylonScene from "./components/modelBaby";
 export default function App() {
   return (
     <>
-    <Canvas style={{height: "100vh"}}>
+    {/* <Canvas style={{height: "100vh"}}>
       <color attach="background" args={ ["#f2f2f2"]}/>
       <Model/>
-    </Canvas>
-    {/* <BabylonScene/> */}
+    </Canvas> */}
+    <BabylonScene/>
     
     </>
   );

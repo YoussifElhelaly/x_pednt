@@ -19,7 +19,7 @@ const BabylonScene = () => {
         'camera1' ,
         0,
         0,
-        10,
+        50,
         new BABYLON.Vector3(0,0,0),
         scene
     ) 
@@ -29,10 +29,10 @@ const BabylonScene = () => {
 
     const light = new BABYLON.HemisphericLight(
         "light1",
-        new BABYLON.Vector3(0,1,0),
+        new BABYLON.Vector3(2,2,2),
         scene
     )
-    light.intensity = 0.7
+    light.intensity = 1
 
     engine.runRenderLoop(() => {
       scene.render();
@@ -46,26 +46,26 @@ const BabylonScene = () => {
 
     // sphere.position.y = 1 
 
-    const mesh = await BABYLON.SceneLoader.ImportMeshAsync(null , "../../public/" , "carbon.glb" , scene)
+    const mesh = await BABYLON.SceneLoader.ImportMeshAsync(null , "../../public/" , "newModel.glb" , scene)
 
     // mesh.setPositionWithLocalVector(new BABYLON.Vector3(0, 0, 0));
     
     console.log(mesh)
 
     // Create a standard material
-    const stdMaterial = new BABYLON.StandardMaterial("stdMaterial", scene);
+    // const stdMaterial = new BABYLON.StandardMaterial("stdMaterial", scene);
 
     // Load your texture (replace 'texturePath' with the actual path or URL)
-    const texturePath = "../../public/textures/carbon_albedo2.jpg";
-    stdMaterial.diffuseTexture = new BABYLON.Texture(texturePath, scene);
-    stdMaterial.diffuseColor = new BABYLON.Color3(1,1, 1); // White color
+    // const texturePath = "../../public/textures/carbon_albedo2.jpg";
+    // stdMaterial.diffuseTexture = new BABYLON.Texture(texturePath, scene);
+    // stdMaterial.diffuseColor = new BABYLON.Color3(1,1, 1); // White color
     
     // Assign the material to the mesh
-    mesh.geometries[0] = stdMaterial;
+    // mesh.geometries[0] = stdMaterial;
 
-    // const ground = BABYLON.MeshBuilder.CreateGround("ground" , {width: 6 , height: 6} , scene)
-    // ground.setPositionWithLocalVector(new BABYLON.Vector3(1, 1, 1));
-    // ground.material = stdMaterial
+    const ground = BABYLON.MeshBuilder.CreateGround("ground" , {width: 6 , height: 6} , scene)
+    ground.setPositionWithLocalVector(new BABYLON.Vector3(-1, -1, -1));
+    ground.material = stdMaterial
 
     return scene
 
@@ -80,7 +80,7 @@ const BabylonScene = () => {
     };
   }, []);
 
-  return <canvas style={{height:"100vh" , width:"100%"}} ref={canvasRef} />;
+  return <canvas style={{height:"100vh" , width:"100%" , background:"red"}} ref={canvasRef} />;
 };
 
 export default BabylonScene;
