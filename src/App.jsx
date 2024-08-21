@@ -14,10 +14,6 @@ export default function App() {
 
   return (
     <div className="modelScene">
-    <Canvas style={{height: "100vh" , width:"70vw"}}>
-      <color attach="background" args={ ["#f2f2f2"]}/>
-      <Model/>
-    </Canvas>
     <div className="controlles">
       <input type="color" onChange={(e)=>{
        setArmColor(e.target.value)
@@ -26,6 +22,10 @@ export default function App() {
        setFaceColor(e.target.value)
       }} />
     </div>
+    <Canvas style={{height: "100vh" , width:"100vw"}}>
+      <color attach="background" args={ ["#f2f2f2"]}/>
+      <Model/>
+    </Canvas>
     {/* <BabylonScene/> */}
     
     </div>

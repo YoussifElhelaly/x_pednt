@@ -21,7 +21,7 @@ import Atest from '../Test'
 export default function Model(props) {
 
   return (
-    <PresentationControls speed={0.5} global zoom={5000} polar={[-0.1, Math.PI / 4]}>
+    <PresentationControls speed={1.5} global zoom={5000} polar={[-0.1, Math.PI / 4]}>
       <Stage environment={"apartment"} intensity={1} contactShadow={false} shadowBias={-0.0015}>
       <ambientLight intensity={100}  />
       {/* <OrbitControls/> */}
