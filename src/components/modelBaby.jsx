@@ -17,8 +17,8 @@ const BabylonScene = () => {
 
     const camera = new BABYLON.ArcRotateCamera(
         'camera1' ,
-        0,
-        0,
+        50,
+        50,
         50,
         new BABYLON.Vector3(0,0,0),
         scene
@@ -46,26 +46,15 @@ const BabylonScene = () => {
 
     // sphere.position.y = 1 
 
-    const mesh = await BABYLON.SceneLoader.ImportMeshAsync(null , "../../public/" , "newModel.glb" , scene)
+    const mesh = await BABYLON.SceneLoader.ImportMeshAsync(null , "../../public/A1-A4/" , "A2.glb" , scene)
 
-    // mesh.setPositionWithLocalVector(new BABYLON.Vector3(0, 0, 0));
+
+
+    mesh.setPositionWithLocalVector(new BABYLON.Vector3(-200, -100, -120));
     
     console.log(mesh)
 
-    // Create a standard material
-    // const stdMaterial = new BABYLON.StandardMaterial("stdMaterial", scene);
 
-    // Load your texture (replace 'texturePath' with the actual path or URL)
-    // const texturePath = "../../public/textures/carbon_albedo2.jpg";
-    // stdMaterial.diffuseTexture = new BABYLON.Texture(texturePath, scene);
-    // stdMaterial.diffuseColor = new BABYLON.Color3(1,1, 1); // White color
-    
-    // Assign the material to the mesh
-    // mesh.geometries[0] = stdMaterial;
-
-    const ground = BABYLON.MeshBuilder.CreateGround("ground" , {width: 6 , height: 6} , scene)
-    ground.setPositionWithLocalVector(new BABYLON.Vector3(-1, -1, -1));
-    ground.material = stdMaterial
 
     return scene
 
@@ -80,7 +69,7 @@ const BabylonScene = () => {
     };
   }, []);
 
-  return <canvas style={{height:"100vh" , width:"100%" , background:"red"}} ref={canvasRef} />;
+  return <canvas style={{height:"100vh" , width:"100%"}} ref={canvasRef} />;
 };
 
 export default BabylonScene;

@@ -38,7 +38,7 @@ export default function NewModel(props) {
         </group>
         <group position={[-0.324, 0.053, 0.014]} rotation={[-0.088, 0, 0]} scale={0.188}>
           <group position={[-0.071, -0.019, 0.615]} rotation={[-3.141, 0, 0]} scale={0.025}>
-            <mesh geometry={nodes._____2001_1.geometry} material={materials['材质.008']} />
+            <mesh geometry={nodes._____2001_1.geometry} material={materials['材质.008']}/>
             <mesh geometry={nodes._____2001_2.geometry} material={materials['材质.017']} />
           </group>
           <mesh geometry={nodes._____2002.geometry} material={materials['材质.009']} position={[0.333, -0.172, 2.764]} rotation={[-3.141, 0, 0]} scale={0.025} />
