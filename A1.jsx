@@ -16,22 +16,11 @@ export function A1(props) {
   // const { nodes, materials } = useGLTF('/A1-A4/A1.glb')
   const [armColor , setArmColor] = useRecoilState(armColorAtom)
   const [faceColor , setFaceColor] = useRecoilState(faceColorAtom)
-  console.log(armColor)
+
   const gltf = useLoader(GLTFLoader, '/A1-A4/A1.glb');
+
   useEffect(() => {
     gltf.scene.traverse((child) => {
-      console.log(child.name , " is " , child.isMesh)
-      if (child.name == "mesh046" && child.isMesh) {
-        child.material.color = new THREE.Color(armColor); // Change color to red
-        child.material.needsUpdate = true;
-      }
-    });
-  }, [gltf , armColor]);
-  console.log(gltf.scene.getObjectByName("mesh046").geometry.dispose())
-  useEffect(() => {
-    gltf.scene.traverse((child) => {
-      console.log(child)
-      console.log(child.name , " is " , child.isMesh)
       if (child.name == "???-??1001" && child.isMesh) {
         child.material.color = new THREE.Color(armColor); // Change color to red
         child.material.needsUpdate = true;
@@ -44,7 +33,6 @@ export function A1(props) {
     // gltf.scene.current.parent.remove(gltf.current);
   }, [gltf , armColor,faceColor]);
 
-  console.log(gltf)
   return (
     <>
       {/* <group {...props} dispose={null}>

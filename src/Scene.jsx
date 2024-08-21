@@ -16,9 +16,16 @@ import A2 from '../A2'
 import A3 from '../A3'
 import A4 from '../A4'
 import Atest from '../Test'
+import { useRecoilValue } from 'recoil'
+import selectFrameAtom from './atoms/selectFrame'
 
 
 export default function Model(props) {
+
+
+  const selectFrameValue = useRecoilValue(selectFrameAtom)
+
+  console.log(selectFrameValue)
 
   return (
     <PresentationControls speed={1.5} global zoom={5000} polar={[-0.1, Math.PI / 4]}>
@@ -28,9 +35,14 @@ export default function Model(props) {
         <Suspense fallback={null}>
           {/* <Carbon/> */}
           {/* <NewModel/> */}
-          <A1/>
-          {/* <A2/> */}
-          {/* <A3/> */}
+          {
+            selectFrameValue == "1" ?
+            <A1/> 
+            : selectFrameValue == "2" ?
+            <A2/>
+            :  
+            <A3/>
+          }
           {/* <A4/> */}
           {/* <Atest/> */}
         </Suspense>

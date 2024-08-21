@@ -41,6 +41,15 @@
   color: #888;
 }
 
-/* .modelScene {
+.modelScene {
   display: flex;
-} */
+}
+
+.modelScene .ex-steps {
+  height: 100vh;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+}
