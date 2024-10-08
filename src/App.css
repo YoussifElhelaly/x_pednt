@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f6f6f6 !important;
+}
 
 .logo {
   height: 6em;
@@ -43,13 +46,16 @@
 
 .modelScene {
   display: flex;
+  justify-content: space-between;
 }
 
 .modelScene .ex-steps {
-  height: 100vh;
-  width: 30vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f2f2f2;
+  background-color: #f6f6f6;
+  width: 30vw;
+    padding: 20px;
+  font-family: system-ui;
+  text-align: center;
 }

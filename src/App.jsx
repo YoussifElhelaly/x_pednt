@@ -10,15 +10,28 @@ import selectFrameAtom from "./atoms/selectFrame";
 import selectStepsAtom from "./atoms/steps";
 import SelectFrame from "./components/selectFrame/selectFrame";
 import SelectTipColor from "./components/selectTipColor/selectTipColor";
-
+import './assets/main.min8459.css'
+import { Model3d } from "./components/model3d/model3d";
+import { OrbitControls } from "@react-three/drei";
+import { Suspense } from "react";
+import Loader from "./components/Loader";
 export default function App() {
 
   const steps = useRecoilValue(selectStepsAtom)
   return (
     <div className="modelScene">
     <Canvas style={{height: "100vh" , width:"70vw"}}>
-      <color attach="background" args={ ["#f2f2f2"]}/>
-      <Model/>
+      <color attach="background" args={ ["#f6f6f6"]}/>
+      <Suspense fallback={<Loader />}>
+        <Model/>
+      </Suspense>
+      <OrbitControls
+        enableZoom={false}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={0}
+        maxDistance={0.2}
+        minDistance={0.2}
+      />
     </Canvas>
     {
       steps == 1 ? <SelectFrame/> : <SelectTipColor/>

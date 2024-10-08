@@ -3,11 +3,12 @@ import selectFrameAtom from "../../atoms/selectFrame"
 import faceColorAtom from "../../atoms/faceColor"
 import armColorAtom from "../../atoms/armColor"
 import selectStepsAtom from "../../atoms/steps"
+import ColorPicker from "../colorPicker/colorPicker"
 
 export default function SelectTipColor () {
     
     const [_ , setSelectFrame] = useRecoilState(selectFrameAtom)
-    const [__,setArmColor] = useRecoilState(armColorAtom)
+    const [armColor,setArmColor] = useRecoilState(armColorAtom)
     const [___ , setSteps] = useRecoilState(selectStepsAtom)
 
     
@@ -19,9 +20,7 @@ export default function SelectTipColor () {
           
 
           <div className="selectColor">
-            <input type="color" onChange={(e)=>{
-                setArmColor(e.target.value)
-            }}/>
+           <ColorPicker setColor={setArmColor} color={armColor} />
           </div>
 
           <div class="ex-configurator-step-button a-change-position_step_2" onClick={()=>{

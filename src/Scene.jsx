@@ -27,41 +27,31 @@ export default function Model(props) {
 
   console.log(selectFrameValue)
 
+  const renderModel = () => {
+    switch (selectFrameValue) {
+      case 1:
+        return <A1  />;
+      case 2:
+        return <A2  />;
+      case 3:
+        return <A3 />;
+      default:
+        return null;
+    }
+  };
+
+  useEffect(()=>{
+    console.log(renderModel())
+  },[selectFrameValue])
+
   return (
-    <PresentationControls speed={1.5} global zoom={5000} polar={[-0.1, Math.PI / 4]}>
-      <Stage environment={"apartment"} intensity={1} contactShadow={false} shadowBias={-0.0015}>
-      <ambientLight intensity={100}  />
-      {/* <OrbitControls/> */}
-        <Suspense fallback={null}>
-          {/* <Carbon/> */}
-          {/* <NewModel/> */}
+    <PresentationControls speed={0.5} global zoom={500}>
+      <Stage environment={"apartment"} intensity={1} >
+
           {
-            selectFrameValue == "1" ?
-            <A1/> 
-            : selectFrameValue == "2" ?
-            <A2/>
-            :  
-            <A3/>
+           renderModel()
           }
-          {/* <A4/> */}
-          {/* <Atest/> */}
-        </Suspense>
       </Stage>
-      {/* <mesh rotation={[-Math.PI / 0, 0, 0]}> 
-      <planeGeometry args={ [170, 170]} />
-        <MeshReflectorMaterial 
-        blur={[300, 100]} 
-        resolution={2048}
-        mixBlur={1}
-        mixStrength={40} 
-        roughness={1} 
-        depthScale={25} 
-        minDepthThreshold={0.4}
-        maxDepthThreshold={1.4}
-        color="black" 
-        metalness={0.5}
-        />
-      </mesh> */}
     </PresentationControls>
   )
 }

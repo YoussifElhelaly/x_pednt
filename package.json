@@ -12,6 +12,7 @@
   "dependencies": {
     "@babylonjs/core": "^7.18.0",
     "@babylonjs/loaders": "^7.18.0",
+    "@jaames/iro": "^5.5.2",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
     "@types/three": "^0.167.1",
