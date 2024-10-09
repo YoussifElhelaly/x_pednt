@@ -13,11 +13,16 @@ import SelectTipColor from "./components/selectTipColor/selectTipColor";
 import './assets/main.min8459.css'
 import { Model3d } from "./components/model3d/model3d";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Loader from "./components/Loader";
+import SelectLight from "./components/selectLight/selectLight";
+import SelectLoupe from "./components/selectLoupe/selectLoupe";
 export default function App() {
 
   const steps = useRecoilValue(selectStepsAtom)
+
+
+
   return (
     <div className="modelScene">
     <Canvas style={{height: "100vh" , width:"70vw"}}>
@@ -34,7 +39,18 @@ export default function App() {
       />
     </Canvas>
     {
-      steps == 1 ? <SelectFrame/> : <SelectTipColor/>
+      steps == 1 ?
+        <SelectFrame/>
+        : 
+        steps == 2 ?
+         
+         <SelectTipColor/>
+        :
+         steps == 3 ?
+         <SelectLight/> 
+    :steps == 4 && 
+      <SelectLoupe/>
+        
     }
     {/* <BabylonScene/> */}
     

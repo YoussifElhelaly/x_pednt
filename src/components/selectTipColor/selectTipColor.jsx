@@ -24,6 +24,11 @@ export default function SelectTipColor () {
           </div>
 
           <div class="ex-configurator-step-button a-change-position_step_2" onClick={()=>{
+            setSteps(3)
+          }}>
+              Next STEP
+          </div>
+          <div class="ex-configurator-step-button a-change-position_step_2" onClick={()=>{
             setSteps(1)
           }}>
               Back STEP

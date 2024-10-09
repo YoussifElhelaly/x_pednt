@@ -18,14 +18,21 @@ import A4 from '../A4'
 import Atest from '../Test'
 import { useRecoilValue } from 'recoil'
 import selectFrameAtom from './atoms/selectFrame'
+import { Light3d1 } from '../light1'
+import { Light3d2 } from '../light2'
+import { Light3d3 } from '../light3'
+import { Light3d4 } from '../light4'
+import selectLightAtom from './atoms/selectLight'
+import { DragonFLy } from '../dragonFly'
+import selectLoupeAtom from './atoms/selectLoup'
 
 
 export default function Model(props) {
 
 
   const selectFrameValue = useRecoilValue(selectFrameAtom)
-
-  console.log(selectFrameValue)
+  const selectLightValue = useRecoilValue(selectLightAtom)
+  const selectLoupeValue = useRecoilValue(selectLoupeAtom)
 
   const renderModel = () => {
     switch (selectFrameValue) {
@@ -39,19 +46,41 @@ export default function Model(props) {
         return null;
     }
   };
-
-  useEffect(()=>{
-    console.log(renderModel())
-  },[selectFrameValue])
+  const renderLight = () => {
+    switch (selectLightValue) {
+      case 1:
+        return <Light3d1  />;
+      case 2:
+        return <Light3d2  />;
+      case 3:
+        return <Light3d3 />;
+        case 4 : 
+        return <Light3d4 />;
+        
+      default:
+        return null;
+    }
+  };
+  const renderLoupe = () => {
+    switch (selectLoupeValue) {
+      case 1:
+        return <DragonFLy  />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <PresentationControls speed={0.5} global zoom={500}>
-      <Stage environment={"apartment"} intensity={1} >
 
-          {
-           renderModel()
-          }
+      <Stage environment={"city"} intensity={0.5} >
+              {
+                renderModel()
+              }
+              {renderLight()}
+              {
+                renderLoupe()
+              }
       </Stage>
-    </PresentationControls>
+
   )
 }
